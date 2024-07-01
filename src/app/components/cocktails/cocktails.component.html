@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="card" style="max-width: 100%; background-color: #d5dbe5;">
+            <div class="card-body">
+                <h5 class="card-title">Filters</h5>
+                <div class="row d-flex" style="align-items: baseline;">
+                    <div class="col-3">
+                        <label>Cocktail Name</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" [(ngModel)]="filterCocktail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @for (cocktail of cocktailList | filter: filterCocktail; track cocktail) {
+            <div class="col-md-6">
+                <div class="card cocktail-card">
+                    <div class="row">
+                        <div class="col-sm-4 pl-0">
+                            <img [src]="cocktail?.imageUrl" class="img-fluid rounded-start" alt="">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-body pb-3">
+                                <div class=" d-flex justify-content-between align-items-center">
+                                    <a [routerLink]="['/cocktails',cocktail?.id]" class="card-title"> {{cocktail?.name}}</a>
+                                    <span class="icon-star" id="star-{{cocktail?.id}}" [class.active]="cocktail?.favorite" (click)="favorite(cocktail)"></span>
+                                </div>
+                                <label class="alcohol-label" [ngClass]="cocktail?.isAlcoholic ? 'alcoholic-class' : 'non-alcoholic-class'">
+                                    {{cocktail?.isAlcoholic ? 'Alcoholic' : 'Non-Alcoholic'}}
+                                </label>
+                                <div class="card-text">
+                                    {{cocktail?.ingredientsUi}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
