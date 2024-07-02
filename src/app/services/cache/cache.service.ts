@@ -9,7 +9,7 @@ export class CacheService {
   constructor() { }
 
   getFavoriteList(): Cocktail[] {
-    const favCocktails = localStorage.getItem('favoriteCocktails');
+    const favCocktails: string = localStorage.getItem('favoriteCocktails') ?? '';
     if(favCocktails)
       return JSON.parse(favCocktails);
     return [];
