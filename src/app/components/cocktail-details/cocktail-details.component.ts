@@ -49,7 +49,7 @@ export class CocktailDetailsComponent {
     if(item.favorite) {
       this.favoriteList.push(item);
     } else {
-      this.favoriteList.splice(this.favoriteList.indexOf(this.favoriteList.find(({ id }) => id === item.id)!),1);
+      this.favoriteList.splice(this.favoriteList.findIndex(({ id }) => id === item.id),1);
     }
     this.cacheService.setFavoriteList(this.favoriteList);
   }

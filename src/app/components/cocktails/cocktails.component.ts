@@ -39,7 +39,7 @@ export class CocktailsComponent {
     this.cocktailService.getCocktails()
       .subscribe({
         next: res =>  {
-          this.cocktailList = res!;
+          this.cocktailList = res || [];
           this.cocktailList.map(item => {
             item.ingredientsUi = item.ingredients?.join(' | ');
             if(this.favoriteList.length) {
