@@ -7,7 +7,7 @@ import { Cocktail } from '../interfaces/cocktail.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(cocktails: Cocktail[], filterBy: string) {
+  transform(cocktails: Cocktail[], filterBy: string): Cocktail[] {
     if(!filterBy) {
       return cocktails;
     }
